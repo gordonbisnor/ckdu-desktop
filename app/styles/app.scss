@@ -1,0 +1,29 @@
+@mixin noSelectOrDrag() {
+  user-drag: none; 
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+li.list-group-item {
+  &:hover:not(.active) {
+  	background-color: #EEE;	
+  }
+  &.stop:hover {
+    background-color: transparent;  
+  }
+}
+
+li.logo {
+	background-color: #df4a3f!important;
+  @include noSelectOrDrag();
+  img {
+    width: 220px;
+    display: block;
+    margin: auto;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    @include noSelectOrDrag();
+  }
+}
