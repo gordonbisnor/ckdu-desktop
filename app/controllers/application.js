@@ -1,32 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	
-	playing: null,
-	player: null,
-  
-  init() {
-    this.set('player', new Audio());
-  },
+
+	player: Ember.inject.service('audio-player'),
 
 	actions: {
-	
+
 		play(stream) {
 			const streamURL = stream.get('url');
 			const player = this.get('player');
-			const playing = this.get('playing');
-
-			if (playing) { 
-				player.pause(); 
-			}
-			
-			this.set('playing', streamURL);
-			player.src = streamURL;
-			player.play();
+			player.play(streamURL);
 		},
 	
-		stop() {
-			this.set('playing', null);
+		pause() {
 			this.get('player').pause();
 		}
 	}
