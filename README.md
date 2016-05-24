@@ -6,3 +6,8 @@ This is an Ember Electron application for streaming audio from CKDU 88.1 FM comm
 
 - Click to play a particular stream
 - Use the space bar to play/pause currently selected stream
+
+Next:
+
+- Up/down arrows to highlight stream, return key to activate it
+- Volume slider
