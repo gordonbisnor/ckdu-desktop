@@ -27,8 +27,8 @@ app.on('window-all-closed', function onWindowAllClosed() {
 
 app.on('ready', function onReady() {
     mainWindow = new BrowserWindow({
-        width: 310,
-        height: 466
+        width: 400,
+        height: 475
     });
 
     delete mainWindow.module;
