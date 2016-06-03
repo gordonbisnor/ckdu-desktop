@@ -2,16 +2,30 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
 
-	playing: null,
-	audio: null,
+	playState: 'paused',
+	
+  audio: null,
+  
   src: null,
+  
+  playing: Ember.computed('playState', function () {
+    return this.get('playState') === 'playing';
+  }),
+  loading: Ember.computed('playState', function () {
+    return this.get('playState') === 'loading';
+  }),
+  paused: Ember.computed('playState', function () {
+    return this.get('playState') === 'paused';
+  }),
 
 	init() {
 		this.set('audio', new Audio());
+    this.get('audio').addEventListener('playing', () => {
+      this.set('playState', 'playing');
+    });
   },
 
   play(stream) {
-  	this.set('playing', true);
   	const audio = this.get('audio');
     let src;
 
@@ -23,14 +37,15 @@ export default Ember.Service.extend({
     }
 
     if (src !== null) {
-  	 audio.src = this.get('src');
-    	audio.play();
-    }
+      audio.src = this.get('src');
+    } 
+    this.set('playState', 'loading');
+    audio.play();
   },
 
   pause() {
   	const audio = this.get('audio');
-    this.set('playing', false);
+    this.set('playState', 'paused');
   	audio.pause();
   }
 	

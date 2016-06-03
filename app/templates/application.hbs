@@ -4,28 +4,15 @@
 				<li class="list-group-item logo">
 					<img src="ckdu.png"/>
 				</li>
-				{{#each model as |stream|}}
-					{{#if (eq player.src stream.url)}}
-						<li class="list-group-item active" {{action 'pause'}}>
-							{{#if player.playing}}
-		      	  	<span class="icon icon-pause pull-left media-object"></span>
-		      	  {{else}}
-		      	  	<span class="icon icon-play pull-left media-object"></span>
-		      	  {{/if}}
-							{{stream-name name=stream.name}}
-						</li>
-					{{else}}
-						<li class="list-group-item" {{action 'play' stream}}>
-		      	  <span class="icon icon-play pull-left media-object"></span>
-		      	  {{stream-name name=stream.name}}
-						</li>
-					{{/if}}
+				{{#each model as |stream index|}}
+				  {{stream-item index=index adjustedSelectedIndex=adjustedSelectedIndex stream=stream player=player toggle=(action 'toggle')}}
 				{{/each}}
 				{{#if player.playing}}
 					<li class="list-group-item stop">
-			  	  <button {{action 'pause'}} class="btn btn-primary pull-right btn-large btn-negative">Stop</button>
+			  	  <button {{action 'pause'}} class="btn btn-primary pull-right btn-large">Stop</button>
 					</li>
 			  {{/if}}
 			</ul>
   </div>
 </div>
+

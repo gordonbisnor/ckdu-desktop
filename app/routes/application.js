@@ -1,27 +1,39 @@
 import Ember from 'ember';
 import { MousetrapRoute, mousetrap } from 'ember-mousetrap';
+const { getOwner } = Ember;
 
 export default Ember.Route.extend(MousetrapRoute, {
-	
-	player: Ember.inject.service('audio-player'),
 
 	model() {
 		return this.store.findAll('stream');
 	},
 
-  shortcuts: {
+	shortcuts: {
   	
-  	togglePlay: mousetrap('space', function () {
-   		
-   		const player = this.get('player');
-      
-      if (player.get('playing'))  {
-        player.pause();
-      } else {
-     		player.play();
-      }
+    down: mousetrap('down', function () {
+			let owner = getOwner(this);
+			let app = owner.lookup(`controller:application`);
+			app.moveDown();
+    }),
 
+    up: mousetrap('up', function () {
+			let owner = getOwner(this);
+			let app = owner.lookup(`controller:application`);
+			app.moveUp();
+    }),
+
+  	togglePlay: mousetrap('space', function () {
+			let owner = getOwner(this);
+			let app = owner.lookup(`controller:application`);
+			app.togglePlay();
+    }),
+
+	  selectedStream: mousetrap('enter', function () {
+			let owner = getOwner(this);
+			let app = owner.lookup(`controller:application`);
+			app.playSelectedStream();
     })
+
   }
 
 });
