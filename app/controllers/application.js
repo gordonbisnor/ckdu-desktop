@@ -49,7 +49,7 @@ export default Ember.Controller.extend({
 	playStream(stream) {
 		const player = this.get('player');
 		
-		if (player.playing && stream.get('selected')) { 
+		if (player.get('playing') && stream.get('selected')) { 
 			return true; 
 		}
 
