@@ -27,3 +27,42 @@ li.logo {
     @include noSelectOrDrag();
   }
 }
+* {
+  font-family: 'Lucida Grande', 'San Francisco', 'Helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 14px;
+}
+.icon {
+  margin-left: 5px;
+}
+$spin-time: 500ms;
+
+.icon-cw, .icon-ccw, .icon-arrows-ccw {
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: $spin-time;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: $spin-time;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: $spin-time;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-transition: rotate(3600deg);
+}
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+.stream-name {
+  margin-left: 30px;
+}
