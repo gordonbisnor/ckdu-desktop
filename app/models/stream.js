@@ -3,7 +3,8 @@ const { attr } = DS;
 
 export default DS.Model.extend({
   name: attr('string'),
-  url:  attr('string')
+  url:  attr('string'),
+  selected: attr('boolean')
 });
 
 
