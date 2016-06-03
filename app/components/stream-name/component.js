@@ -1,5 +1,5 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	classNames: "media-body"
+	classNames: "stream-name media-body"
 });
