@@ -1,0 +1,13 @@
+{{#if stream.selected}}
+	{{#if player.playing}}
+		{{pause-icon}}
+	{{else if player.loading}}
+		{{loading-icon}}
+	{{else}}
+		{{play-icon}}
+	{{/if}}
+{{else}}
+	{{play-icon}}
+{{/if}}
+
+{{stream-name name=stream.name}}
